@@ -16,6 +16,13 @@ This work proposes a Model Predictive Control (RT-MPC) framework to mitigate the
 
 ---
 
+## 🔗 DOI
+
+The reproducible code archive is available at:
+
+https://doi.org/10.5281/zenodo.20108632
+
+
 ## 📁 Repository Structure
 
 src/           # Core MPC and simulation modules
