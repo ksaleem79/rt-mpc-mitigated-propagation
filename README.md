@@ -27,8 +27,11 @@ results/       # Saved simulation outputs
 
 ## 🚀 How to Run
 
-### 1. Install dependencies
+## ⚙️ Installation
 
+Create environment and install dependencies:
+
+```bash
 pip install -r requirements.txt
 
 ---
@@ -69,7 +72,25 @@ Generated output is stored in:
 
 results/
 
+Includes:
+
+.csv files for reproducible datasets
+.npy files for numerical results
+final figures used in the manuscript
+
+
+🔁 Reproducibility
+All experiments:
+
+use fixed random seeds
+generate deterministic outputs
+reproduce figures exactly as reported in the manuscript
+
 ---
+
+🏛️ Affiliation
+This work was developed at:
+Center of Excellence in Information Assurance (CoEIA), King Saud University.
 
 ## 📜 License
 
@@ -80,6 +101,9 @@ CoEIA-KSU License
 
 ## License
 This project is licensed under the MIT License.
+
+📎 Citation
+If you use this code, please cite our paper.
 
 ## Affiliation
 Developed at the Center of Excellence in Information Assurance (CoEIA), King Saud University.
