@@ -15,6 +15,8 @@ m = 3
 runs = 300
 iterations = 100  # repeat operations to get stable measurement
 
+set_seed(0)
+
 A = np.eye(n) * 0.98
 B = np.random.randn(n, m) * 0.05
 Q = np.eye(n)
@@ -30,7 +32,7 @@ ht_times = []
 for r in range(runs):
     set_seed(r)
 
-    x = np.ones(n) * 0.1
+    x = np.random.randn(n)
     sigma = 1 - noise_std
 
     # ---------- RT-MPC timing ----------
@@ -60,27 +62,51 @@ for r in range(runs):
 rt_mpc_times = np.array(rt_mpc_times)
 ht_times = np.array(ht_times)
 
-# Remove outliers (top 1%)
-rt_mpc_times = rt_mpc_times[rt_mpc_times < np.percentile(rt_mpc_times, 99)]
-ht_times = ht_times[ht_times < np.percentile(ht_times, 99)]
+# retain all runtime observations
+# rt_mpc_times = rt_mpc_times[rt_mpc_times < np.percentile(rt_mpc_times, 99)]
+# ht_times = ht_times[ht_times < np.percentile(ht_times, 99)]
 
 print("✅ Runtime stats:")
 print("RT-MPC mean:", np.mean(rt_mpc_times), "ms")
 print("HT mean:", np.mean(ht_times), "ms")
 
+print("HT median:",
+      np.median(ht_times))
+
+print("HT p95:",
+      np.percentile(ht_times,95))
+
+print("HT p99:",
+      np.percentile(ht_times,99))
+
+print("HT max:",
+      np.max(ht_times))
+      
+
 # ---------- Plot ----------
+
 plt.figure(figsize=(8,5))
 
-plt.hist(ht_times, bins=30, alpha=0.6, label="HT (Heuristic Threshold)")
-plt.hist(rt_mpc_times, bins=30, alpha=0.6, label="RT-MPC (Proposed)")
+plt.boxplot(
+    [ht_times, rt_mpc_times],
+    labels=[
+        "HT",
+        "RT-MPC"
+    ]
+)
 
-plt.xlabel("Computation Time per Step (ms)")
-plt.ylabel("Frequency")
-plt.title("Computation-Time Distribution for Mitigation Algorithms")
+plt.yscale("log")
 
-plt.legend()
+plt.ylabel("Computation Time (ms, log scale)")
+plt.title("Computation-Time Comparison")
 plt.grid(alpha=0.3)
 
-plt.savefig("Figure_Computation_Times.png", dpi=300)
+plt.tight_layout()
+
+plt.savefig(
+    "Figure_Computation_Times.png",
+    dpi=300,
+    bbox_inches="tight"
+)
 
 print("✅ Figure 4 generated")
