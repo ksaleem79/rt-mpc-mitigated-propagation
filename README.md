@@ -1,116 +1,149 @@
-# RT-MPC Mitigated Propagation
+RT-MPC Mitigated Propagation
 
-This repository contains the implementation and experiments for the paper:
+This repository contains the implementation, experiments, and reproducibility materials accompanying the manuscript:
 
-**“Real-Time MPC-Based Mitigation of Manipulated Content Propagation Under Uncertainty”**
+Uncertainty-Aware Real-Time MPC for Mitigating Adversarial Manipulated-Content Propagation in Cyber–Information Networks
 
----
+Overview
 
-## 📌 Overview
+This work proposes a real-time Model Predictive Control (RT-MPC) framework for mitigating manipulated-content propagation under:
 
-This work proposes a Model Predictive Control (RT-MPC) framework to mitigate the spread of manipulated content under:
+adversarial disturbances,
+uncertain detector confidence,
+stochastic operating conditions,
+bounded intervention actions.
 
-- adversarial disturbances
-- uncertain detection confidence
-- stochastic system behavior
+The repository contains the final implementation used to generate the figures, tables, and quantitative results reported in the revised manuscript.
 
----
+DOI and Reproducibility Archive
 
-## 🔗 DOI
-
-The reproducible code archive is available at:
+The versioned reproducibility archive is available via Zenodo:
 
 https://doi.org/10.5281/zenodo.20108632
 
+Repository Structure
+rt-mpc-mitigated-propagation/
+│
+├── src/
+│   ├── mpc_controller.py
+│   ├── simulation_environment.py
+│   └── ...
+│
+├── experiments/
+│   ├── stress_test.py
+│   ├── cumulative_experiment.py
+│   ├── disturbance_correlation.py
+│   ├── phase_portrait.py
+│   ├── intervention_signals.py
+│   ├── multirun_analysis.py
+│   ├── runtime_experiment.py
+│   ├── uncertainty_experiment.py
+│   ├── quantitative_metrics.py
+│   └── ablation_analysis.py
+│
+├── figures/
+│   └── manuscript figures
+│
+├── results/
+│   ├── csv outputs
+│   ├── numpy outputs
+│   └── quantitative metrics
+│
+├── requirements.txt
+├── LICENSE
+└── README.md
 
-## 📁 Repository Structure
+Installation
 
-src/           # Core MPC and simulation modules
-experiments/   # Scripts for generating experimental results
-figures/       # Plot scripts
-results/       # Saved simulation outputs
+Create a Python environment and install dependencies:
 
----
-
-## 🚀 How to Run
-
-## ⚙️ Installation
-
-Create environment and install dependencies:
-
-```bash
 pip install -r requirements.txt
 
----
+Running Experiments
+Figure 1 – Exposure Trajectories
+python experiments/exposure_trajectories.py
 
-### 2. Run experiments
+Figure 2 – Uncertainty Robustness
+python experiments/uncertainty_experiment.py
 
-**Figure 5 (Stress Test):**
+Figure 3 – Computation Time Evaluation
+python experiments/runtime_experiment.py
 
-python -m experiments.stress_test
+Figure 4 – Adversarial Stress Test
+python experiments/stress_test.py
 
-**Figure 6 (Cumulative Exposure):**
+Figure 5 – Cumulative Exposure
+python experiments/cumulative_experiment.py
 
-python -m experiments.cumulative_experiment
+Figure 6 – Disturbance Response Correlation
+python experiments/disturbance_correlation.py
 
-**Figure 7 (Disturbance Correlation):**
+Figure 7 – Phase Portrait
+python experiments/phase_portrait.py
 
-python -m experiments.disturbance_correlation
+Figure 8 – Intervention Signals
+python experiments/intervention_signals.py
 
-**Figure 8 (Phase Portrait):**
+Figure 9 – Multi-Run Robustness
+python experiments/multirun_analysis.py
 
-python -m experiments.phase_portrait
+Quantitative Metrics
+python experiments/quantitative_metrics.py
 
-**Figure 9 (Intervention Signals):**
+Ablation Analysis
+python experiments/ablation_analysis.py
 
-python -m experiments.intervention_signals
+Reproducibility
 
-**Figure 10 (Multi-run Analysis):**
+The reported experiments:
 
-python -m experiments.multirun_analysis
+use fixed random seeds,
+generate deterministic outputs under the documented configuration,
+reproduce the figures reported in the manuscript,
+use the same MPC configuration described in the paper.
 
----
-
-## 📊 Reproducibility
-
-All figures in the paper can be reproduced using the scripts in the `experiments/` folder.
-
-Generated output is stored in:
+Generated outputs are stored in:
 
 results/
 
-Includes:
 
-.csv files for reproducible datasets
-.npy files for numerical results
-final figures used in the manuscript
+including:
 
+CSV result files,
+NumPy arrays,
+quantitative metrics,
+experiment outputs used for manuscript figures.
+Experimental Configuration
 
-🔁 Reproducibility
-All experiments:
+Unless otherwise stated:
 
-use fixed random seeds
-generate deterministic outputs
-reproduce figures exactly as reported in the manuscript
+Network size:           n = 30
+Intervention channels:  m = 3
+Prediction horizon:     N = 5
+Confidence:             σ = 0.8
+Control bounds:         [-6.0, 6.0]
+Terminal weight:        wt = 1.0
+Solver:                 SciPy SLSQP
 
----
+Computational Environment
 
-🏛️ Affiliation
-This work was developed at:
-Center of Excellence in Information Assurance (CoEIA), King Saud University.
+The reported experiments were generated using:
 
-## 📜 License
+Apple Mac Studio
+Apple Silicon architecture
+32 GB RAM
+macOS
+Python 3.9
+NumPy
+SciPy
+Matplotlib
 
-CoEIA-KSU License
+Notes on Repository Organization
 
+Following reviewer feedback during manuscript revision, experiment scripts were reorganized into the experiments/ directory to improve reproducibility and maintain consistency between the repository structure and manuscript documentation.
 
-## 🏛️ Affiliation
+Affiliation: Center of Excellence in Information Assurance (CoEIA), King Saud University, Riyadh, Saudi Arabia.
 
-## License
-This project is licensed under the MIT License.
+License: MIT License
 
-📎 Citation
-If you use this code, please cite our paper.
-
-## Affiliation
-Developed at the Center of Excellence in Information Assurance (CoEIA), King Saud University.
+Citation: If you use this code or reproducibility package, please cite the associated manuscript and Zenodo archive.
