@@ -1,0 +1,156 @@
+Last login: Mon Nov  9 10:53:44 on ttys000
+You have mail.
+(base) DrKashifPC@Mac-Studio ~ % cd /
+(base) DrKashifPC@Mac-Studio / % ls   
+Applications	dev		Library		private		tmp		var
+bin		etc		opt		sbin		Users		Volumes
+cores		home		pkg		System		usr
+(base) DrKashifPC@Mac-Studio / % cd /Volumes/LaCie
+(base) DrKashifPC@Mac-Studio LaCie % cd ksaleem79-rt-mpc-mitigated-propagation-0811479 
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % cd experiments 
+(base) DrKashifPC@Mac-Studio experiments % python -m experiments.quantitative_metrics
+/Users/DrKashifPC/opt/anaconda3/bin/python: Error while finding module specification for 'experiments.quantitative_metrics' (ModuleNotFoundError: No module named 'experiments')
+(base) DrKashifPC@Mac-Studio experiments % python -m quantitative_metrics 
+
+=== Quantitative Results ===
+
+NC: Exposure=6876.53, Cost=0.00, Variability=66.35, Violations=0.00
+HT: Exposure=7729.16, Cost=103.92, Variability=66.35, Violations=0.00
+RT-MPC: Exposure=5809.85, Cost=187.06, Variability=58.36, Violations=0.00
+(base) DrKashifPC@Mac-Studio experiments % python -m ablation_analysis 
+
+=== Ablation Results ===
+
+HT 8729.61
+No Uncertainty 5712.81
+No Terminal 5718.73
+Full RT-MPC 5718.73
+(base) DrKashifPC@Mac-Studio experiments % cd ..
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.runtime_experiment
+✅ Runtime stats:
+RT-MPC mean: 0.01286858303030298 ms
+HT mean: 0.0036131351515151706 ms
+✅ Figure 4 generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.runtime_experiment
+✅ Runtime stats:
+RT-MPC mean: 2.1484808644444437 ms
+HT mean: 0.003546941548824835 ms
+✅ Figure 4 generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.runtime_experiment
+^CTraceback (most recent call last):
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/experiments/runtime_experiment.py", line 40, in <module>
+    
+  File "/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/src/mpc_controller.py", line 85, in mpc_step
+    result = minimize(
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_minimize.py", line 631, in minimize
+    return _minimize_slsqp(fun, x0, args, jac, bounds,
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/slsqp.py", line 437, in _minimize_slsqp
+    g = append(wrapped_grad(x), 0.0)
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/optimize.py", line 275, in eval
+    return func(x)
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 255, in grad
+    self._update_grad()
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 238, in _update_grad
+    self._update_grad_impl()
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 155, in update_grad
+    self.g = approx_derivative(fun_wrapped, self.x, f0=self.f,
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_numdiff.py", line 486, in approx_derivative
+    return _dense_difference(fun_wrapped, x0, f0, h,
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_numdiff.py", line 557, in _dense_difference
+    df = fun(x) - f0
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_numdiff.py", line 437, in fun_wrapped
+    f = np.atleast_1d(fun(x, *args, **kwargs))
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 134, in fun_wrapped
+    return fun(np.copy(x), *args)
+  File "/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/src/mpc_controller.py", line 74, in cost
+    * np.linalg.norm(uk, 1)
+  File "<__array_function__ internals>", line 5, in norm
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/site-packages/numpy/linalg/linalg.py", line 2557, in norm
+    return add.reduce(abs(x), axis=axis, keepdims=keepdims)
+KeyboardInterrupt
+
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.runtime_experiment
+✅ Runtime stats:
+RT-MPC mean: 26.072645225300008 ms
+HT mean: 0.004227027766650989 ms
+RT-MPC median: 24.410163959999878
+RT-MPC p95: 45.025296856999596
+RT-MPC p99: 57.43065061430001
+RT-MPC max: 64.30136374999961
+✅ Figure 4 generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.runtime_experiment
+✅ Runtime stats:
+RT-MPC mean: 26.69768943223334 ms
+HT mean: 0.00421203753330941 ms
+HT median: 0.0035656250000748457
+HT p95: 0.0068548189995567554
+HT p99: 0.007270707499522187
+HT max: 0.009272500000179207
+✅ Figure 4 generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.run_single_trial
+✅ Figure 2 generated correctly
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.uncertainty_experiment
+✅ Figure 3 generated successfully
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.uncertainty_experiment
+✅ Figure 3 generated successfully
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.cumulative_experiment
+✅ Results saved to results/
+✅ Figure_Cumulative_Exposure.png generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.disturbance_correlation
+✅ Data saved to results/disturbance_response.csv
+✅ Figure_Disturbance_Response_Correlation.png generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.phase_portrait
+✅ Figure_Phase_Portrait.png generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.intervention_signals
+✅ Figure_Intervention_Signals.png generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.stress_test 
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/experiments/stress_test.py:207: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+✅ Figure_Adversarial_StressTest.png generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.multirun_analysis
+✅ Multi-run data saved
+✅ Figure_MultiRun_Robustness.png generated
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.quantitative_metrics
+
+=== Quantitative Results ===
+
+NC: Exposure=6876.53, Cost=0.00, Variability=66.35, Violations=0.00
+HT: Exposure=6870.93, Cost=10.39, Variability=66.35, Violations=0.00
+RT-MPC: Exposure=6196.89, Cost=29.51, Variability=51.58, Violations=0.00
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.ablation_analysis
+
+Traceback (most recent call last):
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/experiments/ablation_analysis.py", line 195, in <module>
+    results["No Uncertainty"] = simulate("NO_UNCERTAINTY")
+  File "/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/experiments/ablation_analysis.py", line 99, in simulate
+    u = mpc_step(
+TypeError: mpc_step() got an unexpected keyword argument 'lambda_unc'
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.ablation_analysis
+Traceback (most recent call last):
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Users/DrKashifPC/opt/anaconda3/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/experiments/ablation_analysis.py", line 195, in <module>
+    results["No Uncertainty"] = simulate("NO_UNCERTAINTY")
+  File "/Volumes/LaCie/ksaleem79-rt-mpc-mitigated-propagation-0811479/experiments/ablation_analysis.py", line 99, in simulate
+    u = mpc_step(
+TypeError: mpc_step() got an unexpected keyword argument 'lambda_unc'
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % python -m experiments.ablation_analysis
+
+=== Ablation Results ===
+
+HT: Exposure=6870.93, Cost=10.39
+No Uncertainty: Exposure=6187.05, Cost=30.09
+No Terminal: Exposure=6207.13, Cost=29.25
+Full RT-MPC: Exposure=6196.89, Cost=29.51
+(base) DrKashifPC@Mac-Studio ksaleem79-rt-mpc-mitigated-propagation-0811479 % 
